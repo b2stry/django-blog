@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+</head>
+<body>
+<form action="{% url "blog:edit_action" %}" method="post">
+    {% csrf_token %}
+
+
+    <input type="hidden" name="article_id" value="{{ article.id | default:'0' }}"/>
+    <label>文章标题<br>
+        <input type="text" name="title" value="{{ article.title }}"/>
+    </label><br><br>
+    <label>文章内容<br>
+        <textarea rows="10" cols="30" name="content">{{ article.content }}</textarea>
+    </label><br><br>
+
+
+    <input type="submit" value="修改">
+
+</form>
+</body>
+</html>
